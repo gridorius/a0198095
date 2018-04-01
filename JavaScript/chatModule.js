@@ -153,14 +153,20 @@
 		sendXml("../PHP/mainPHP.php","post", data).then(fillChats);
 
 	}
-	
+
+	window.updateChat = setInterval(updateMessages, 500);
+
+	function updateMessages(){
+		loadMessages(document.getElementById('chat').dataset.id, 'last', getLastID());
+	}
 	window.sendMessage = function(text, id) {
 		let data = new FormData();
 		data.append("SENDMESSAGE", "true");
 		data.append("message", text);
 		data.append("id", id);
 		let data2 = 'SENDMESSAGE=' + true + '&message=' + encodeURIComponent(text) + '&id=' + encodeURIComponent(id);
-		sendXml("../PHP/mainPHP.php","post", data);
+		this.clearInterval(window.updateChat);
+		sendXml("../PHP/mainPHP.php","post", data).then(()=>window.updateChat = setInterval(updateMessages, 500));
 	}
 	
 	window.reChat = function(a,b) {
@@ -174,10 +180,6 @@
 		let mess = document.getElementsByClassName('messageText');
 		if (mess.length) return mess[mess.length - 1].dataset.mesId;
 	}
-
-	window.updateChat = setInterval(function () {
-		loadMessages(document.getElementById('chat').dataset.id, 'last', getLastID());
-	}, 500);
 
 	let destruct = function(){
 		clearInterval(window.updateChat);
