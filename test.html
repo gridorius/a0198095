@@ -1,0 +1,19 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+</head>
+<body>
+<script>
+    let xml = new XMLHttpRequest();
+    xml.open('get','asd.txt',false);
+    xml.setRequestHeader('Content-Type','Text/plain: charset=windows-1251');
+    xml.send();
+    alert(xml.getResponseHeader('Content-Type'));
+    alert(xml.responseText);
+
+</script>
+
+</body>
+</html>

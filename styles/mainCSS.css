@@ -1,0 +1,475 @@
+/*
+@font-face {
+    font-family: "Open Sans"; 
+    src: url("https://fonts.googleapis.com/css?family=Open+Sans"); 
+   }
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Open Sans";
+}
+
+[selected]{
+    user-select:all;
+    -moz-user-select: all;
+    -webkit-user-select: all;
+    -o-user-select: all;
+}
+
+#chatlist {
+    position: absolute;
+    right: 0px;
+    width: 200px;
+    height: 100%;
+    background:rgb(112, 48, 48);
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows:35px;
+    grid-gap: 2px;
+    overflow: hidden;
+}
+
+#chatlist .chat {
+    text-align: center;
+    line-height: 35px;
+    font-size: 20px;
+    color: rgb(187, 196, 179);
+    cursor: pointer;
+}
+
+#chatlist .chat:hover {
+    text-align: center;
+    line-height: 35px;
+    font-size: 20px;
+    background: rgb(199, 121, 102);
+    color: rgb(112, 48, 48);
+    box-shadow: 2px 2px 10px  rgba(0, 0, 0, 0.705);
+}
+
+#chat {
+    position: absolute;
+    width: 700px;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows:40px 1fr 50px 5px;
+    overflow:hidden;
+}
+
+#messages {
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+#messageText {
+   box-shadow: inset 2px 2px 20px  black;
+}
+
+#infoBox{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,1fr);
+    grid-template-rows: 1fr;
+    border-bottom: 1px solid rgb(112, 48, 48);
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.76);
+}
+
+#chatName{
+    font-size: 20px;
+    padding-left: 10px;
+    line-height: 40px;
+    color: rgb(212, 221, 204);
+}
+
+#message{
+    position: absolute;
+    bottom:10px;
+    left: 5px;
+    width: 575px;
+    min-height: 25px;
+    max-height: 150px;
+    float: left;
+    padding: 5px;
+    font-size:16px;
+    background: rgb(212, 221, 204);
+    overflow-x: hidden;
+    overflow-y: auto;
+    overflow-wrap: break-word;
+}
+
+#send {
+    position: absolute;
+    bottom:10px;
+    right: 5px;
+    width: 100px;
+    height: 35px;
+    float: left;
+    background: rgb(39, 39, 39);
+    color: rgb(187, 196, 179);
+    text-align: center;
+    line-height: 35px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+#send:hover{
+    color: rgb(212, 221, 204);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.664);
+}
+
+/*сообщения*/
+.messageContainer {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.messageAuthorName {
+    float: left;
+    font-size: 16px;
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+.messageDate {
+    color: rgb(58, 58, 58);
+}
+
+.messageText {
+    margin-top: 5px;
+    overflow-wrap: break-word;
+    font-size: 15px;
+}
+
+
+/*оболочка*/
+#header{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 45px;
+    background-image: url(../resurses/head.png);
+    border-bottom: 5px solid rgb(57,60,65);
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.705);
+    overflow: hidden;
+}
+
+body{
+    background-image: url(../resurses/body.png);
+    background-size: 100%;
+}
+
+#logo{
+    width: 150px;
+    height: 100%;
+    float: left;
+}
+
+#circle{
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 39px;
+    height: 39px;
+    background: rgb(112, 48, 48);
+    border-radius: 100%;
+}
+#logoText{
+    position: absolute;
+    left: 45px;
+    width: 155px;
+    height: 45px;
+    line-height: 45px;
+    color: rgb(112, 48, 48);
+    font-size: 20px;
+}
+.topPunct{
+    position: relative;
+
+    width: 150px;
+    height: 45px;
+    text-align: center;
+    line-height: 45px;
+    font-size: 20px;
+    border-right: 10px solid rgb(57,60,65);
+    box-shadow: 10px 0px 10px -1px rgba(0, 0, 0, 0.377);
+    color: rgb(126, 130, 122);
+    transform: skew(-45deg);
+    float: left;
+    transition: all 0.1s linear;
+    cursor: pointer;
+   
+}
+.topPunct:nth-of-type(2){
+    border-left: 10px solid rgb(57,60,65);
+}
+.topPunct:hover{
+    width: 200px;
+    color: rgb(187, 196, 179);
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.topPunct:hover + .topPunct{
+    width: 100px;
+}
+
+res{
+    position: absolute;
+    left: 0px;
+    top:0px;
+    width: 100%;
+    height: 45px;
+    transform: skew(45deg);
+}
+
+#container{
+    position: absolute;
+    top:60px;
+    left: 100px;
+    width:1100px;
+    height:590px;
+}
+
+#menu{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 200px;
+    height: 100%;
+}
+
+.menyPunct{
+    position: relative;
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    font-size: 20px;
+    margin-bottom: 5px;
+    color: rgb(126, 130, 122);
+    text-align: left;
+    cursor: pointer;
+}
+
+.MPicon{
+    position: relative;
+    width: 35px;
+    height: 35px;
+    background: rgb(65, 65, 65);
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 100%;
+    float: left;
+}
+
+.menyPunct:hover{
+    color: rgb(187, 196, 179);
+    text-shadow: 5px 5px 3px rgb(39, 39, 39);
+}
+
+#content{
+    position: absolute;
+    top: 0px;
+    left: 200px;
+    width: 900px;
+    height: 100%;
+    background: rgb(78, 82, 88);
+}
+
+#exitB{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 100px;
+    height: 45px;
+    line-height: 45px;
+    color: rgb(212, 221, 204);
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+#exitB:hover{
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.808);
+}
+
+/*Регистрация*/
+#relo>input{
+    border: 1px solid transparent;
+    width: 195px;
+    height: 30px;
+    line-height: 30px;
+    margin-left: 30px;
+    margin-top: 5px;
+    padding: 5px;
+    background:rgba(0, 0, 0, 0.377);
+    color: white;
+    font-size: 15px;
+}
+
+#relo>input[type=radio]{
+    width: 0px;
+    height: 10px;
+}
+
+
+
+#head{
+    position: relative;
+    margin-left:30px;
+    margin-top: 10px;
+    font-size: 30px;
+    font-family: Georgia, 'Times New Roman', Times, serif
+}
+
+#reloB{
+    position: relative;
+    margin-top: 10px;
+    margin-left: 55px;
+    width: 150px;
+    height: 30px;
+    line-height: 30px;
+    background: rgba(0, 0, 0, 0.377);
+    text-align: center;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#loader{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: black;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    z-index: 999;
+    opacity: 1;
+    transition: all 1s linear;
+}
+
+#loader > div{
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    justify-self: center;
+    align-self: center;
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-right: 10px solid red;
+    border-left: 10px solid transparent;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-radius: 100%;
+    animation: rotate 2s linear infinite;
+    transform-origin: center;
+}
+#loader > div > div{
+    position: absolute;
+    top:20px;
+    left: 20px;
+    width: 120px;
+    height: 120px;
+    border-right: 10px solid green;
+    border-left: 10px solid transparent;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-radius: 100%;
+    animation: rotate 2s linear infinite;
+}
+
+#loader > div > div > div{
+    position: absolute;
+    top:20px;
+    left: 20px;
+    width: 60px;
+    height: 60px;
+    border-right: 10px solid blue;
+    border-left: 10px solid transparent;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-radius: 100%;
+    animation: rotate 2s linear infinite;
+}
+
+/*Профиль */
+#USER {
+    display: grid;
+    height: 500;
+    width: 900;
+    background: rgb(47, 52, 59);
+    grid-template-columns: 10px 210px 10px 1fr 10px;
+    grid-template-rows: 10px 1fr 10px;
+}
+
+#USER_info {
+    grid-row: 2/3;
+    grid-column: 2/3;
+    display: grid;
+    grid-template-rows:300px 10px 1fr;
+}
+
+#USER_photo {
+    grid-row: 1/2;
+}
+
+#USER_name {
+    padding-left: 10px;
+    padding-top: 10px;
+    grid-row: 3/4;
+    background: rgb(126, 130, 122);
+    font-size:13px;
+}
+
+#USER_news {
+    grid-row: 2/3;
+    grid-column: 4/5;
+    display: grid;
+    grid-template-rows: 10px 40px 10px 40px 10px 1fr;
+}
+
+name,
+surname,
+age {
+    font-size: 20px;
+}
+
+#nick {
+    background: rgb(126, 130, 122);
+    font-size: 40px;
+    grid-row: 1/3;
+    grid-column: 1/3;
+    padding-left:10px;
+
+}
+#dop_info {
+    background: rgb(126, 130, 122);
+    grid-column: 1/3;
+    grid-row: 4/5;
+    display: grid;
+    grid-template-rows: 20px 10px 5px 20px;
+    font-size: 20px;
+    padding-left:10px;
+    padding-top:5px;
+}
+#news {
+    background: rgb(126, 130, 122);
+    grid-column: 1/3;
+    grid-row: 6/6;
+    font-size: 30px;
+    padding-left:10px;
+    padding-top:5px;
+}
+
+
+@keyframes rotate{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
