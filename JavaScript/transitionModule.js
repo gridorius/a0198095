@@ -42,7 +42,11 @@
         }
         else this.document.getElementById('exitB').hidden = false;
         if (getLocation() == 'chats') {
-            connectModules('chat');
+            connectModules('chat,resizeControl').load=function(){
+                resizeContoll(document.getElementById('message'), function (e) {
+		        	document.getElementById('chat').style.gridTemplateRows = '40px 1fr ' + (e.h + 20) + 'px 5px';
+	        	});
+            }
         } else if (window.modules != undefined) disconnectModule('chat');
         if (getLocation() == 'login') {
             connectModules('login');

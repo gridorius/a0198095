@@ -100,7 +100,7 @@ function alignmentContent() {
 	let w = document.body.clientWidth;
 	let h = document.body.clientHeight;
 	let left = (w - parseInt(getComputedStyle(container).width)) / 2;
-	let height = h - 60 - 10;
+	let height = h - 60 ;
 	container.style.left = left < 0 ? 0 + 'px' : left + 'px';
 	container.style.height = height + 'px';
 }

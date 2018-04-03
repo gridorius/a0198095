@@ -18,9 +18,9 @@ if(empty($_GET['transition']))echo
 		<input type="radio" id="m" name="pol" value="1"><label for="m">Муж</label>
 		<input type="radio" id="z" name="pol" value="0"><label for="z">Жен</label><br>
 		<input type="date" id="date_of_birth" name="date_of_birth" required><br>
-		<div id="reloB" onclick="registration.call(this)">Регистрация</div><br>
+		<div id="reloB" onclick="registration.call(this)">Регистрация</div>
+		<a href="../login/"><div id='relob'>Вход</div></a>
 	</form>
-    <a href="../login/">Вход</a>
 <?php 
 if(empty($_GET['transition']))echo "
 </pre>

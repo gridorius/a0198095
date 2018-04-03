@@ -7,7 +7,7 @@
 			xml.onreadystatechange = function(){
 				if(xml.readyState!=4)return;
 				if(xml.status!=200)reject('Ошибка загрузки');
-				else resolve(xml.responseText),console.log(xml.responseText);
+				else resolve(xml.responseText);//,console.log(xml.responseText);
 			}
 			xml.send(data);
 		});
