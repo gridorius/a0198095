@@ -4,7 +4,6 @@
 	messageBlock.addEventListener('keydown', keyDown);
 
 	//Функции
-
 	let reloadTurn = [];
 
 	function reload() {
@@ -227,7 +226,5 @@
 	//Вызов 
 
 	loadChats();
-
-
 
 })();
