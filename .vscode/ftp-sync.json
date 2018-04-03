@@ -1,0 +1,24 @@
+{
+    "remotePath": "domains/a0198095.xsph.ru/public_html/",
+    "host": "141.8.194.243",
+    "username": " a0198095",
+    "password": "ndjq,fnz",
+    "port": 21,
+    "secure": false,
+    "protocol": "ftp",
+    "uploadOnSave": true,
+    "passive": false,
+    "debug": false,
+    "privateKeyPath": null,
+    "passphrase": null,
+    "ignore": [
+        "\\.vscode",
+        "\\.git",
+        "\\.DS_Store"
+    ],
+    "generatedFiles": {
+        "uploadOnSave": false,
+        "extensionsToInclude": [],
+        "path": ""
+    }
+}
