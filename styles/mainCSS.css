@@ -1,10 +1,3 @@
-/*
-@font-face {
-    font-family: "Open Sans"; 
-    src: url("https://fonts.googleapis.com/css?family=Open+Sans"); 
-   }
-*/
-
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 * {
@@ -13,11 +6,11 @@
     font-family: "Open Sans";
 }
 
-[selected]{
-    user-select:all;
-    -moz-user-select: all;
-    -webkit-user-select: all;
-    -o-user-select: all;
+[unselected]{
+    user-select:none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
 }
 
 #chatlist {
